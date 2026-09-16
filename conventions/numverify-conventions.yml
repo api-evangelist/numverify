@@ -1,0 +1,52 @@
+generated: '2026-09-16'
+method: derived
+source: >-
+  Derived from the public Numverify request/response examples and live probes.
+  No OpenAPI is published (docs gated), so cross-cutting semantics are inferred
+  from the observable surface.
+auth_style:
+  type: apiKey
+  transports:
+  - 'query param access_key (legacy base apilayer.net/api)'
+  - 'header apikey (marketplace base api.apilayer.com/number_verification)'
+  cross_ref: authentication/numverify-authentication.yml
+idempotency:
+  coverage: na
+  scope: []
+  note: >-
+    Read-only lookup API. The only operation is GET /validate, which is safe and
+    naturally idempotent; there is no mutating surface, so replay-protection
+    headers (Idempotency-Key) do not apply.
+reversibility:
+  grade: na
+  note: >-
+    No write operations exist (validate is a read). Nothing can be created,
+    charged, or deleted, so there is nothing to reverse.
+dry_run_mode:
+  supported: na
+  note: Read-only API; a dry-run has no meaning for a lookup.
+pagination:
+  style: none
+  note: Single-record lookup; responses are not collections and are not paginated.
+field_expansion: none
+metadata: none
+request_id_tracing:
+  supported: unknown
+  note: No documented request-id / trace header on the public surface.
+versioning:
+  style: unversioned-path
+  cross_ref: lifecycle/numverify-lifecycle.yml
+error_envelope:
+  legacy: '{ success: false, error: { code, type, info } } (HTTP 200)'
+  marketplace: '{ message } (HTTP 4xx)'
+  cross_ref: errors/numverify-problem-types.yml
+rate_limit_signaling:
+  note: >-
+    Quota is monthly per plan, not per-second. Exhaustion surfaces as an API
+    error (usage_limit_reached) rather than documented RateLimit-* headers.
+  cross_ref: rate-limits/numverify-rate-limits.yml
+response_format:
+  default: application/json
+  options:
+  - JSON (default)
+  - JSONP callback (legacy base, callback param)

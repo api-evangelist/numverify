@@ -1,0 +1,54 @@
+generated: '2026-09-16'
+method: searched
+source: https://numverify.com/pricing
+currency: USD
+billing_period: monthly
+plan_count: 5
+note: >-
+  Quota-based plans (monthly request allowance). Annual billing offers a
+  discount on each paid tier. Only the Free tier is non-commercial.
+plans:
+- name: Free
+  price: 0
+  billing_period: monthly
+  quota_requests_per_month: 100
+  overage: null
+  commercial_use: false
+  https: true
+  support: basic
+- name: Basic
+  price: 14.99
+  price_annual: 161.99
+  billing_period: monthly
+  quota_requests_per_month: 5000
+  overage_per_request: 0.011992
+  commercial_use: true
+  https: true
+  support: standard
+- name: Professional
+  price: 59.99
+  price_annual: 629.99
+  billing_period: monthly
+  quota_requests_per_month: 50000
+  overage_per_request: 0.0047992
+  commercial_use: true
+  https: true
+  support: standard
+- name: Enterprise
+  price: 129.99
+  price_annual: 1325.99
+  billing_period: monthly
+  quota_requests_per_month: 250000
+  overage_per_request: 0.00207984
+  commercial_use: true
+  https: true
+  support: standard
+- name: Custom
+  price: null
+  billing_period: monthly
+  quota_requests_per_month: null
+  overage: null
+  commercial_use: true
+  note: >-
+    Contact-sales tier for unlimited requests, custom pricing, and dedicated
+    technical support.

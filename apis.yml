@@ -1,6 +1,15 @@
 aid: numverify
 name: Numverify API
-description: ''
+description: >-
+  Numverify is a free and simple REST API for national and international phone
+  number validation and lookup across 232 countries, operated by APILayer (an
+  Idera, Inc. brand). A single validate call returns whether a number is valid
+  along with its local and international formats, country code and name,
+  approximate location, carrier, and line type (mobile or landline).
+  Authentication is by API key with two published bases — the legacy
+  apilayer.net host (access_key query parameter) and the newer api.apilayer.com
+  marketplace host (apikey header) — and access is metered by monthly request
+  quota across free and paid plans.
 type: Index
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/numverify/refs/heads/main/apis.yml
@@ -11,19 +20,65 @@ tags:
 - Phone Numbers
 - Telecom
 - Data
+- Validation
+- Carrier Lookup
+- Phone Number Lookup
 apis:
 - name: Numverify API
-  description: ''
+  description: >-
+    GET /validate — validate a phone number and return validity, local and
+    international formats, country, location, carrier, and line type. Read-only,
+    single-endpoint lookup API.
   humanURL: https://numverify.com/documentation
   baseURL: https://apilayer.net/api
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   properties:
   - type: Documentation
     url: https://numverify.com/documentation
+  - type: Authentication
+    url: authentication/numverify-authentication.yml
+  - type: ErrorCatalog
+    url: errors/numverify-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/numverify-rate-limits.yml
+  - type: Plans
+    url: plans/numverify-plans-pricing.yml
+  - type: Conventions
+    url: conventions/numverify-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/numverify-lifecycle.yml
+  - type: MCPServer
+    url: mcp/numverify-mcp.yml
+  - type: LLMsTxt
+    url: llms/numverify-llms.txt
 common:
+- type: DomainSecurity
+  url: security/numverify-domain-security.yml
 - type: Website
   url: https://numverify.com
 - type: Documentation
   url: https://numverify.com/documentation
+- type: Pricing
+  url: https://numverify.com/pricing
+- type: SignUp
+  url: https://numverify.com/signup
+- type: TermsOfService
+  url: https://www.ideracorp.com/legal/APILayer
+- type: PrivacyPolicy
+  url: https://www.ideracorp.com/Legal/PrivacyPolicy
+- type: Blog
+  url: https://blog.apilayer.com
+- type: GitHubOrganization
+  url: https://github.com/apilayer
+- type: StatusPage
+  url: https://numverify.com/api-status
+- type: Packages
+  url: packages/numverify-packages.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-16'
+  status: enriched
+  artifacts_added: 10
+  pass: local-v3

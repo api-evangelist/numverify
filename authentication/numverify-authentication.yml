@@ -1,0 +1,31 @@
+generated: '2026-09-16'
+method: searched
+source: >-
+  numverify.com homepage example and the APILayer marketplace page for
+  number_verification. No OpenAPI is published (docs gated), so this profile is
+  hand-derived from the public request examples and confirmed against live
+  probes.
+summary: >-
+  Single API-key credential, no OAuth. The key is obtained from a free APILayer
+  account. Two transports depending on base URL.
+schemes:
+- id: access_key_query
+  type: apiKey
+  in: query
+  name: access_key
+  base: https://apilayer.net/api
+  example: 'https://apilayer.net/api/validate?access_key=YOUR_KEY&number=14158586273'
+  evidence: 'Probed 2026-09-16; missing key -> code 101 missing_access_key'
+- id: apikey_header
+  type: apiKey
+  in: header
+  name: apikey
+  base: https://api.apilayer.com/number_verification
+  example: "curl 'https://api.apilayer.com/number_verification/validate?number=14158586273' --header 'apikey: YOUR_KEY'"
+  evidence: 'Probed 2026-09-16; missing header -> HTTP 401 {"message":"No API key found in request"}'
+oauth2: false
+mutual_tls: false
+notes: >-
+  Key acquisition is self-serve at https://numverify.com/signup (free tier, 100
+  requests/month). The same APILayer account key works across the APILayer
+  marketplace suite on the api.apilayer.com host.

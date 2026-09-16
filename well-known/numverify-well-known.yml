@@ -1,0 +1,44 @@
+generated: '2026-09-16'
+method: probed
+source: >-
+  Live probes of /.well-known/* and common discovery paths on every host this
+  record knows: numverify.com (site), apilayer.net (legacy API base), and
+  api.apilayer.com (marketplace API base). No served document found; recorded as
+  a negative result. No WellKnown/SecurityTxt pointer emitted.
+note: >-
+  apilayer.net returns HTTP 200 with a JSON body {"success":false,"error":{...
+  "missing_access_key"}} for EVERY path, including /.well-known/security.txt —
+  that is the API catch-all error, not a real security.txt, so it is recorded as
+  a miss. A suite-level llms.txt exists at apilayer.com/llms.txt (parent brand,
+  not a /.well-known/ document, not Numverify-specific).
+hosts:
+- host: numverify.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+- host: apilayer.net
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+    note: >-
+      200 but body is the API missing_access_key error envelope, not a
+      security.txt document — treated as a miss.
+- host: api.apilayer.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null

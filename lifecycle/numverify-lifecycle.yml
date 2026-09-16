@@ -1,0 +1,34 @@
+generated: '2026-09-16'
+method: searched
+source: >-
+  numverify.com public site (homepage, /api-status) and the APILayer marketplace
+  page. Formal versioning, deprecation and SLA policy live in the gated docs;
+  what is publicly observable is recorded here.
+status_page:
+  url: https://numverify.com/api-status
+  vendor: custom (APILayer-built dashboard, "Real-time APIs performance insights")
+  live: true
+  observed:
+    uptime: '99.94%'
+    latency_ms: 296.56
+    error_rate: '0.06%'
+    monitored_endpoints:
+    - validate
+  note: Public real-time uptime/latency dashboard for the validate endpoint.
+versioning:
+  scheme: unversioned-path
+  note: >-
+    Neither base URL carries a version segment (apilayer.net/api,
+    api.apilayer.com/number_verification). The API is migrating from the legacy
+    apilayer.net host to the api.apilayer.com marketplace host; both are live.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  note: >-
+    No public deprecation policy or Sunset/Deprecation (RFC 8594) header
+    behaviour is documented on the public site; the legacy apilayer.net base
+    remains operational alongside the marketplace base.
+deprecated_operations: []
+sla:
+  url: null
+  note: No public SLA on the marketing site; SLA/support tier is bundled per plan.

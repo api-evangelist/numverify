@@ -1,0 +1,37 @@
+# Numverify API
+
+> Numverify is a free and simple REST API for national and international phone
+> number validation and lookup, covering 232 countries. A single validate call
+> returns whether a number is valid plus its local and international formats,
+> country, location, carrier, and line type (mobile/landline). Numverify is an
+> APILayer product, an Idera, Inc. brand.
+
+Authentication is by API key. Two published base URLs exist:
+- Legacy: https://apilayer.net/api — key passed as `?access_key=YOUR_KEY`
+- Marketplace: https://api.apilayer.com/number_verification — key passed as the `apikey` request header
+
+## Core operation
+- GET /validate — validate a phone number. Params: `number` (required),
+  `country_code` (2-letter ISO, required for national-format numbers),
+  `format=1` (pretty JSON, legacy base). Returns: valid, local_format,
+  international_format, country_code, country_name, location, carrier, line_type.
+
+## Documentation and site
+- [Homepage](https://numverify.com): product overview and interactive example
+- [Documentation](https://numverify.com/documentation): API reference (redirects to a docs.apilayer.com login)
+- [Pricing](https://numverify.com/pricing): Free, Basic, Professional, Enterprise, Custom plans
+- [API Status](https://numverify.com/api-status): live uptime and latency dashboard
+- [Sign Up](https://numverify.com/signup): free account, 100 requests/month
+
+## Company
+- [APILayer](https://apilayer.com): unified API marketplace (parent brand)
+- [Blog](https://blog.apilayer.com): APILayer engineering and product blog
+- [Terms](https://www.ideracorp.com/legal/APILayer)
+- [Privacy](https://www.ideracorp.com/Legal/PrivacyPolicy)
+
+## Notes for agents
+- Read-only lookup API; every plan is monthly-quota based (100 to 250,000
+  requests/month). There are no write operations, webhooks, or streaming events.
+- Errors use the APILayer envelope: {"success": false, "error": {"code",
+  "type", "info"}} on the legacy base; a {"message": ...} object on the
+  marketplace base.

@@ -1,0 +1,44 @@
+generated: '2026-09-16'
+method: searched
+source: >-
+  GitHub, Packagist and RubyGems search for numverify client libraries. APILayer
+  publishes no first-party SDK for Numverify; the only "official" repo
+  (apilayer/numverify-API) is an archived docs/README repository, not an
+  installable package. The libraries below are community-maintained.
+note: >-
+  No first-party (APILayer/Idera) SDK exists on any registry. Numverify is a
+  single-endpoint REST API called directly with curl/fetch, so packages are
+  third-party conveniences. official:false on every entry.
+packages:
+- name: markrogoyski/numverify-api-client-php
+  registry: packagist
+  language: php
+  official: false
+  url: https://packagist.org/packages/markrogoyski/numverify-api-client-php
+  repo: https://github.com/markrogoyski/numverify-api-client-php
+  version: v3.0.0
+  published: '2026-03-08'
+  note: Actively maintained community PHP client for phone validation + country API.
+- name: numverify
+  registry: rubygems
+  language: ruby
+  official: false
+  url: https://rubygems.org/gems/numverify
+  repo: https://github.com/chronogolf/numverify
+  version: 0.3.2
+  published: '2020-03-23'
+  note: >-
+    Community Ruby client (chronogolf). Last release 2020-03-23 — predates the
+    APILayer marketplace migration; likely still points at the legacy
+    apilayer.net base.
+- name: apilayer/numverify-API
+  registry: github
+  language: null
+  official: true
+  url: https://github.com/apilayer/numverify-API
+  version: null
+  published: null
+  note: >-
+    Vendor GitHub repository, but it is a docs/README repo (not a package) and is
+    ARCHIVED (last push 2023-09-01). No installable artifact; recorded for
+    provenance only, not counted as an SDK.

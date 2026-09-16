@@ -1,0 +1,34 @@
+generated: '2026-09-16'
+method: searched
+source: https://numverify.com/pricing
+model: monthly-quota
+limit_count: 4
+note: >-
+  Numverify does not publish a per-second/per-minute rate limit or RateLimit-*
+  response headers on its public surface. Throttling is by MONTHLY REQUEST QUOTA
+  tied to the plan; exceeding it returns an APILayer usage-limit error rather
+  than a 429. The counts below are the monthly allowances per paid/free tier.
+limits:
+- scope: per-account (plan quota)
+  plan: Free
+  window: month
+  limit: 100
+- scope: per-account (plan quota)
+  plan: Basic
+  window: month
+  limit: 5000
+- scope: per-account (plan quota)
+  plan: Professional
+  window: month
+  limit: 50000
+- scope: per-account (plan quota)
+  plan: Enterprise
+  window: month
+  limit: 250000
+response_headers:
+  documented: []
+  note: No RateLimit-*/X-RateLimit-*/Retry-After headers are documented publicly.
+exhaustion:
+  status_code: 200
+  error: 'legacy envelope error type usage_limit_reached (docs, gated); not a 429'
+cross_ref: plans/numverify-plans-pricing.yml

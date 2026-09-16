@@ -1,0 +1,41 @@
+generated: '2026-09-16'
+method: derived
+source: >-
+  No official or third-party hosted MCP server was found for Numverify (searched
+  GitHub, mcpservers.org, Apify, and APILayer's own blog, which only teaches how
+  to wrap REST APIs as MCP generically). The tool below is a DERIVED candidate
+  from the public Numverify REST surface, not a shipped server.
+status: candidate
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: api-key
+  verified: derived
+note: >-
+  Numverify exposes a single public operation (GET /validate). Nobody ships an
+  MCP server for it; an agent would call the REST endpoint directly with an
+  apikey header (marketplace base) or access_key query param (legacy base).
+tools:
+- name: validate_phone_number
+  description: >-
+    Validate an international or national phone number and return validity,
+    formats, country, location, carrier and line type.
+  backing_rest: GET /validate
+  inputSchema:
+    type: object
+    properties:
+      number:
+        type: string
+        description: Phone number to validate (international or national format).
+      country_code:
+        type: string
+        description: >-
+          2-letter ISO country code, required when a national-format number is
+          supplied so it can be interpreted.
+      format:
+        type: integer
+        description: Set to 1 for pretty-printed JSON (legacy apilayer.net base only).
+    required:
+    - number

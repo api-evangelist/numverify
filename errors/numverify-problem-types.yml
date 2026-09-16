@@ -1,0 +1,41 @@
+generated: '2026-09-16'
+method: probed
+source: >-
+  Live unauthenticated calls to the Numverify endpoints. The full error-code
+  table lives in the docs, which are gated behind a docs.apilayer.com login, so
+  only codes observed live are recorded as verified; the envelope shape is
+  confirmed.
+format: apilayer-envelope
+note: >-
+  NOT RFC 9457 / application/problem+json. Two envelopes are in use. Legacy base
+  (apilayer.net/api) returns {"success": false, "error": {"code": <int>,
+  "type": <slug>, "info": <human message>}} with HTTP 200. Marketplace base
+  (api.apilayer.com/number_verification) returns {"message": <text>} with a
+  proper HTTP status (e.g. 401 for a missing key).
+envelopes:
+- base: https://apilayer.net/api
+  http_status_on_error: 200
+  shape: '{ success: false, error: { code, type, info } }'
+- base: https://api.apilayer.com/number_verification
+  http_status_on_error: 4xx
+  shape: '{ message }'
+problem_types:
+- code: 101
+  type: missing_access_key
+  base: https://apilayer.net/api
+  meaning: No API access key supplied (or an invalid key) on the legacy base.
+  evidence: 'Probed https://apilayer.net/api/validate 2026-09-16 -> code 101 missing_access_key'
+  verified: true
+- code: null
+  type: no_api_key
+  base: https://api.apilayer.com/number_verification
+  http_status: 401
+  meaning: '{"message":"No API key found in request"} — apikey header absent on the marketplace base.'
+  evidence: 'Probed https://api.apilayer.com/number_verification/validate 2026-09-16 -> HTTP 401'
+  verified: true
+undocumented_here:
+  note: >-
+    Numverify additionally documents (behind the gated docs) codes such as 104
+    usage_limit_reached, 210 no_phone_number_provided and 211
+    non_numeric_phone_number. They are NOT recorded here because they were not
+    probed live and the docs require login — an honest gap, not a fabrication.
