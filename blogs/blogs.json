@@ -1,0 +1,14 @@
+{
+  "repo": "numverify",
+  "feeds": [
+    {
+      "source": "https://www.ideracorp.com/Legal/PrivacyPolicy",
+      "feed_url": "https://www.ideracorp.com/Legal/PrivacyPolicy",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-09-19T20:17:39Z"
+}
